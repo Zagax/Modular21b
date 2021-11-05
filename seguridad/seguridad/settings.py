@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-g=l=&i!al^mh05-@x@grn=claueed(cpnju=mijbpk8c%vk*k^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -86,15 +86,18 @@ WSGI_APPLICATION = 'seguridad.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+import dj_database_url
+from decouple import config
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangodatabase',
-        'USER': 'root',
-        'PASSWORD': 'Magios5678',
-        'HOST': 'localhost',
-        'PORT': '3306',
+       # dj_database_url.config(default=config('DATABASE_URLg'))
+        #'ENGINE': 'django.db.backends.mysql',
+        #'NAME': 'djangodatabase',
+        #'USER': 'root',
+        #'PASSWORD': 'Magios5678',
+        #'HOST': 'localhost',
+        #'PORT': '3306',
     }
 }
 
@@ -146,3 +149,42 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
 
 STATIC_FILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+import os
+import sys
+import urllib.parse
+
+# Register database schemes in URLs.
+urllib.parse.uses_netloc.append('mysql')
+
+try:
+
+    # Check to make sure DATABASES is set in settings.py file.
+    # If not default to {}
+
+    if 'DATABASES' not in locals():
+        DATABASES = {}
+
+    if 'DATABASE_URL' in os.environ:
+        url = urllib.urllib(os.environ['DATABASE_URL'])
+
+        # Ensure default database exists.
+        DATABASES['default'] = DATABASES.get('default', {})
+
+        # Update with environment configuration.
+        DATABASES['default'].update({
+            'NAME': url.path[1:],
+            'USER': url.username,
+            'PASSWORD': url.password,
+            'HOST': url.hostname,
+            'PORT': url.port,
+            
+        })
+
+
+        if url.scheme == 'mysql':
+            DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
+except Exception:
+    print ('Unexpected error:', sys.exc_info())
+
+del DATABASES['default']['OPTIONS']['sslmode'] 

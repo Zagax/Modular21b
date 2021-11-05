@@ -27,7 +27,7 @@ class ActaAdministrativa extends Component{
         e.preventDefault()
         console.log(this.state)
         axios
-            .post('http://127.0.0.1:8000/actaadministrativa', this.state)
+            .post('https://seguridadqci.herokuapp.com/actaadministrativa', this.state)
             .then(response => {
                 console.log(response)
                 window.location.reload()

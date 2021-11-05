@@ -15,7 +15,7 @@ class ActaAdministrativaView extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://127.0.0.1:8000/actaadministrativa')
+        axios.get('https://seguridadqci.herokuapp.com/actaadministrativa')
         .then(response => {
             console.log(response)
             this.setState({ActaLista: response.data})
@@ -50,7 +50,7 @@ class ActaAdministrativaView extends Component {
     }
 
     removeCategory (ids) {
-        fetch('http://127.0.0.1:8000/actaadministrativa/'+ids+'/',{
+        fetch('https://seguridadqci.herokuapp.com/actaadministrativa/'+ids+'/',{
             method: 'DELETE',
             headers: {'Accept':'application/json','Content-Type':'application/json'}
         })
