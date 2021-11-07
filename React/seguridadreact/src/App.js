@@ -10,6 +10,7 @@ import {
   Link
 } from "react-router-dom";
 
+import { useAuth0 } from "@auth0/auth0-react";
 
 import RomperCandado from './Components/RomperCandado';
 import ActaAdministrativa from './Components/ActaAdministrativa';
@@ -34,30 +35,41 @@ import FalloCamaraViews from './Components/FalloCamaraViews';
 import SolicitudVideoCamarasView from './Components/SolicitudVideoCamarasView';
 import SolicitudVideoCamara from './Components/SolicitudVideoCamaras';
 import { Container, Nav, NavDropdown, Offcanvas } from 'react-bootstrap';
-import Login from './Components/Login';
-import Logout from './Components/Logout';
+import LoginButton from './Components/Login';
+import LogoutButton from './Components/Logout';
+import Profile from './Components/Profile';
+import logo from "./logo.svg";
+
 //import Button from 'react-bootstrap';
 //import cucei from './images/cucei.png';
 
 function App(){
+  // document.getElementById("myDiv").style.marginRight = "50px";
+  const { isAuthenticated } = useAuth0();
+
   return(
     // <h2>The Components way</h2><Login/><br /><Logout />
+
     <Router>
-      <Navbar bg="dark" fixed="top" variant="dark" expand={false} collapseOnSelect>
+        <Navbar bg="dark" variant="dark" expand={false} collapseOnSelect>
         <Container fluid>
           <Navbar.Brand>
             <img alt="" src="/353px-Escudo_UdeG.svg.png" width="30" height="30" className="d-inline-block align-top" />{' '}
             Seguridad CUCEI
           </Navbar.Brand>
           {/* Login */}
-          <Navbar> <Login></Login> </Navbar>
+          {/* <div id="myDiv" >
+          <Login></Login>
+          </div> */}
           <Navbar.Toggle aria-controls="offcanvasNavbar responsive-navbar-nav" />
           <Navbar.Offcanvas id="offcanvasNavbar" arial-labelledby="offcanvasNavbarLabel" placement="end">
+            <LoginButton/>
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id="offcanvasNavbarLabel">Menu</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3" id="collasible-nav-dropdown">
+              {/* <Login></Login> */}
                 <NavDropdown title="Seguridad" id="offcanvasNavbarDropdown">
                   <NavDropdown.Item>
                     <Link to='/actaadmin' className="btn btn-outline-dark">Acta Administrativa</Link>
@@ -97,12 +109,27 @@ function App(){
                 </NavDropdown>
               </Nav>
               ~{'\n'}
-              <Logout></Logout>
+
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
+
       <Switch>
+        <Route path= '/' exact>
+        
+        <div className="App">
+            <img src={logo} className="App-logo" alt="logo" />
+            {isAuthenticated ? (
+            <>
+                <Profile />
+                <LogoutButton />
+            </>
+            ) : (
+            <LoginButton />
+            )}
+            </div>
+        </Route>
         <Route path='/actaadmin' exact>
           <ActaAdministrativa></ActaAdministrativa>
         </Route>
@@ -170,9 +197,11 @@ function App(){
           <SolicitudVideoCamarasView></SolicitudVideoCamarasView>
         </Route>
         <Route path='/logout' exact>
-        <Logout></Logout>
+        {/* <LogoutButton></Logout> */}
         </Route>
       </Switch>
+      
+
     </Router>
 
 

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
 
 class ReporteIncidentesMatPel extends Component{
     constructor(props){
@@ -107,7 +106,7 @@ class ReporteIncidentesMatPel extends Component{
                         </Row>
                         <br></br>
                         <center>
-                            <Button type='Submit' className='btn btn-primary btn-lg btn-success' href="">Guardar</Button>
+                            <button type='Submit' className='btn btn-primary btn-lg btn-success' href="">Guardar</button>
                         </center>
                     </Container>
                 </Form>
