@@ -13,7 +13,7 @@ class EventoSocialView extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://127.0.0.1:8000/social')
+        axios.get('https://seguridadqci.herokuapp.com/social')
         .then(response => {
             console.log(response)
             this.setState({EventoSocialLista: response.data})
@@ -25,7 +25,7 @@ class EventoSocialView extends Component {
 
     
     removeCategory (ids) {
-        fetch('http://127.0.0.1:8000/social/'+ids+'/',{
+        fetch('https://seguridadqci.herokuapp.com/social/'+ids+'/',{
             method: 'DELETE',
             headers: {'Accept':'application/json','Content-Type':'application/json'}
         })

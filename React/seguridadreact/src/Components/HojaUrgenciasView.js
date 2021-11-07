@@ -39,7 +39,7 @@ class HojaUrgenciasView extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://127.0.0.1:8000/hojaurgencias')
+        axios.get('https://seguridadqci.herokuapp.com/hojaurgencias')
         .then(response => {
             console.log(response)
             this.setState({IncidentesLista: response.data})
@@ -50,7 +50,7 @@ class HojaUrgenciasView extends Component {
     }
 
     removeCategory (ids) {
-        fetch('http://127.0.0.1:8000/hojaurgencias/'+ids+'/',{
+        fetch('https://seguridadqci.herokuapp.com/hojaurgencias/'+ids+'/',{
             method: 'DELETE',
             headers: {'Accept':'application/json','Content-Type':'application/json'}
         })

@@ -36,7 +36,7 @@ class EventoSocial extends Component{
         e.preventDefault()
         console.log(this.state)
         axios
-            .post('http://127.0.0.1:8000/social', this.state)
+            .post('https://seguridadqci.herokuapp.com/social', this.state)
             .then(response => {
                 console.log(response)
                 window.location.reload()

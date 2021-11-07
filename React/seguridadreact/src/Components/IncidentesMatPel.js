@@ -48,7 +48,7 @@ class ReporteIncidentesMatPel extends Component{
         form_data.append('Estrategias', this.state.Estrategias);
         form_data.append('EvidenciaFoto', this.state.EvidenciaFoto, this.state.EvidenciaFoto.name);
         axios
-            .post('http://127.0.0.1:8000/reporteincidentesmatpel', form_data)
+            .post('https://seguridadqci.herokuapp.com/reporteincidentesmatpel', form_data)
             .then(response => {
                 console.log(response)
                 window.location.reload()

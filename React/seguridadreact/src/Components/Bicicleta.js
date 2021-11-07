@@ -38,7 +38,7 @@ class Bicicleta extends Component{
         form_data.append('FotoIdB', this.state.FotoIdB, this.state.FotoIdB.name);
         form_data.append('Descripcion', this.state.Descripcion);
         axios
-            .post('http://127.0.0.1:8000/bicicleta', form_data)
+            .post('https://seguridadqci.herokuapp.com/bicicleta', form_data)
             .then(response => {
                 console.log(response)
                 window.location.reload()

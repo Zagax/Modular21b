@@ -13,7 +13,7 @@ class FalloCamaraViews extends Component {
     }
     
     componentDidMount(){
-        axios.get('http://127.0.0.1:8000/camara')
+        axios.get('https://seguridadqci.herokuapp.com/camara')
         .then(response => {
             console.log(response)
             this.setState({FalloCamaraLista: response.data})
@@ -24,7 +24,7 @@ class FalloCamaraViews extends Component {
     }
     
     removeCategory (ids) {
-        fetch('http://127.0.0.1:8000/camara/'+ids+'/',{
+        fetch('https://seguridadqci.herokuapp.com/camara/'+ids+'/',{
             method: 'DELETE',
             headers: {'Accept':'application/json','Content-Type':'application/json'}
         })

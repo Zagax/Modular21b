@@ -13,7 +13,7 @@ class SolicitudVideoCamarasView extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://127.0.0.1:8000/solcamara')
+        axios.get('https://seguridadqci.herokuapp.com/solcamara')
         .then(response => {
             console.log(response)
             this.setState({SolicitudVideoCamarasLista: response.data})
@@ -24,7 +24,7 @@ class SolicitudVideoCamarasView extends Component {
     }
     
     removeCategory (ids) {
-        fetch('http://127.0.0.1:8000/solcamara/'+ids+'/',{
+        fetch('https://seguridadqci.herokuapp.com/solcamara/'+ids+'/',{
             method: 'DELETE',
             headers: {'Accept':'application/json','Content-Type':'application/json'}
         })

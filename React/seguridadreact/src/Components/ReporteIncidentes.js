@@ -76,7 +76,7 @@ class ReporteIncidentes extends Component{
         form_data.append('Observacion', this.state.Observacion);
         form_data.append('Descripcion', this.state.Descripcion);
         axios
-            .post('http://127.0.0.1:8000/incidencias', form_data)
+            .post('https://seguridadqci.herokuapp.com/incidencias', form_data)
             .then(response => {
                 console.log(response)
                 window.location.reload()

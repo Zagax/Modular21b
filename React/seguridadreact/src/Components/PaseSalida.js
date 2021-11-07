@@ -43,7 +43,7 @@ class PaseSalida extends Component{
         form_data.append('Descripcion', this.state.Descripcion);
         form_data.append('Fecha', this.state.Fecha);
         axios
-            .post('http://127.0.0.1:8000/pasesalida', form_data)
+            .post('https://seguridadqci.herokuapp.com/pasesalida', form_data)
             .then(response => {
                 console.log(response)
                 window.location.reload()

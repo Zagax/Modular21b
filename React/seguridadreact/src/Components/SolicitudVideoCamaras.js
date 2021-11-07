@@ -46,7 +46,7 @@ class SolicitudVideoCamara extends Component{
         form_data.append('fotoIdF', this.state.fotoIdF, this.state.fotoIdF.name);
         form_data.append('fotoIdB', this.state.fotoIdB, this.state.fotoIdB.name);
         axios
-            .post('http://127.0.0.1:8000/solcamara', form_data)
+            .post('https://seguridadqci.herokuapp.com/solcamara', form_data)
             .then(response => {
                 console.log(response)
                 window.location.reload()

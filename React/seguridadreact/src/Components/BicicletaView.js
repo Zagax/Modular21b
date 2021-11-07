@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Table } from 'react-bootstrap';
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import Button from 'react-bootstrap/Button';
 
 class BicicletaView extends Component {
     constructor(props){
@@ -15,7 +14,7 @@ class BicicletaView extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://127.0.0.1:8000/bicicleta')
+        axios.get('https://seguridadqci.herokuapp.com/bicicleta')
         .then(response => {
             console.log(response)
             this.setState({BicicletaLista: response.data})
@@ -56,7 +55,7 @@ class BicicletaView extends Component {
             if (data.section === 'body' && data.column.index === 3) {
                 data.cell.width=300
                 data.cell.height=100
-                doc.addImage(img2, 'JPEG', data.cell.x + 2, data.cell.y + 2, data.cell.width, data.cell.height, "Alias","SLOW")
+                doc.addImage(img2, 'JPEG', data.cell.x + 2, data.cell.y + 2, data.cell.width, data.cell.height, "Alias2","SLOW2")
             }
           }
           
@@ -68,7 +67,7 @@ class BicicletaView extends Component {
     }
 
     removeCategory (ids) {
-        fetch('http://127.0.0.1:8000/bicicleta/'+ids+'/',{
+        fetch('https://seguridadqci.herokuapp.com/bicicleta/'+ids+'/',{
             method: 'DELETE',
             headers: {'Accept':'application/json','Content-Type':'application/json'}
         })

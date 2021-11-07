@@ -43,7 +43,7 @@ class RomperCandado extends Component{
         form_data.append('Descripcion', this.state.Descripcion);
         form_data.append('Fecha', this.state.Fecha);
         axios
-            .post('http://127.0.0.1:8000/rompercandado', form_data)
+            .post('https://seguridadqci.herokuapp.com/rompercandado', form_data)
             .then(response => {
                 console.log(response)
                 window.location.reload()

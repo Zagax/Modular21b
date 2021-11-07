@@ -45,7 +45,7 @@ class RomperCandadoView extends Component {
                 if (data.section === 'body' && data.column.index === 6){
                     data.cell.width=300
                     data.cell.height=100
-                    doc.addImage(img2, 'JPEG', data.cell.x + 2, data.cell.y + 2, data.cell.width, data.cell.height, "Alias","SLOW")
+                    doc.addImage(img2, 'JPEG', data.cell.x + 2, data.cell.y + 2, data.cell.width, data.cell.height, "Alias2","SLOW2")
                 }
             }
         }
@@ -56,7 +56,7 @@ class RomperCandadoView extends Component {
     }
     
     componentDidMount(){
-        axios.get('http://127.0.0.1:8000/rompercandado')
+        axios.get('https://seguridadqci.herokuapp.com/rompercandado')
         .then(response => {
             console.log(response)
             this.setState({RomperLista: response.data})
@@ -67,7 +67,7 @@ class RomperCandadoView extends Component {
     }
     
     removeCategory (ids) {
-        fetch('http://127.0.0.1:8000/rompercandado/'+ids+'/',{
+        fetch('https://seguridadqci.herokuapp.com/rompercandado/'+ids+'/',{
             method: 'DELETE',
             headers: {'Accept':'application/json','Content-Type':'application/json'}
         })

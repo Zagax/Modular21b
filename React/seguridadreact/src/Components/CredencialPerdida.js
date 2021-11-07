@@ -39,7 +39,7 @@ class CredencialPerdida extends Component{
         form_data.append('FotoIneFrente', this.state.FotoIneFrente, this.state.FotoIneFrente.name);
         form_data.append('FotoIneTrasera', this.state.FotoIneTrasera, this.state.FotoIneTrasera.name);
         axios
-            .post('http://127.0.0.1:8000/credencialperdida', form_data)
+            .post('https://seguridadqci.herokuapp.com/credencialperdida', form_data)
             .then(response => {
                 console.log(response)
                 window.location.reload()

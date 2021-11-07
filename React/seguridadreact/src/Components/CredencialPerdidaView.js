@@ -15,7 +15,7 @@ class CredencialPerdidaView extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://127.0.0.1:8000/credencialperdida')
+        axios.get('https://seguridadqci.herokuapp.com/credencialperdida')
         .then(response => {
             console.log(response)
             this.setState({CredencialLista: response.data})
@@ -56,7 +56,7 @@ class CredencialPerdidaView extends Component {
                 if (data.section === 'body' && data.column.index === 4){
                     data.cell.width=300
                     data.cell.height=100
-                    doc.addImage(img2, 'JPEG', data.cell.x + 2, data.cell.y + 2, data.cell.width, data.cell.height, "Alias","SLOW")
+                    doc.addImage(img2, 'JPEG', data.cell.x + 2, data.cell.y + 2, data.cell.width, data.cell.height, "Alias2","SLOW2")
                 }
             }
         }
@@ -67,7 +67,7 @@ class CredencialPerdidaView extends Component {
     }
 
     removeCategory (ids) {
-        fetch('http://127.0.0.1:8000/credencialperdida/'+ids+'/',{
+        fetch('https://seguridadqci.herokuapp.com/credencialperdida/'+ids+'/',{
             method: 'DELETE',
             headers: {'Accept':'application/json','Content-Type':'application/json'}
         })

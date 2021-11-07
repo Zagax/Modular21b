@@ -49,7 +49,7 @@ class IncidentesMatPelView extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://127.0.0.1:8000/reporteincidentesmatpel')
+        axios.get('https://seguridadqci.herokuapp.com/reporteincidentesmatpel')
         .then(response => {
             console.log(response)
             this.setState({IncidentesLista: response.data})
@@ -60,7 +60,7 @@ class IncidentesMatPelView extends Component {
     }
     
     removeCategory (ids) {
-        fetch('http://127.0.0.1:8000/reporteincidentesmatpel/'+ids+'/',{
+        fetch('https://seguridadqci.herokuapp.com/reporteincidentesmatpel/'+ids+'/',{
             method: 'DELETE',
             headers: {'Accept':'application/json','Content-Type':'application/json'}
         })

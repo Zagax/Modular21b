@@ -64,7 +64,7 @@ class HojaUrgencias extends Component{
         e.preventDefault()
         console.log(this.state)
         axios
-            .post('http://127.0.0.1:8000/hojaurgencias', this.state)
+            .post('https://seguridadqci.herokuapp.com/hojaurgencias', this.state)
             .then(response => {
                 console.log(response)
                 window.location.reload()

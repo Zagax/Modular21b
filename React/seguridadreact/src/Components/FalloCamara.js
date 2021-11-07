@@ -35,7 +35,7 @@ class FalloCamara extends Component{
         e.preventDefault()
         console.log(this.state)
         axios
-            .post('http://127.0.0.1:8000/camara', this.state)
+            .post('https://seguridadqci.herokuapp.com/camara', this.state)
             .then(response => {
                 console.log(response)
                 window.location.reload()
