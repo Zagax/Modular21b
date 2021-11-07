@@ -57,8 +57,6 @@ class PaseSalida extends Component{
         const { CodigoAlumno, Sello, Descripcion} = this.state
         return (            
             <div>
-                <br></br>
-                <br></br>
                 <div className= "container mt-5">
                     <Link to='/pasesalida/view' className= "btn btn-info">Listado</Link>
                 </div>

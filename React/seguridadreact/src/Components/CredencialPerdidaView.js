@@ -79,10 +79,6 @@ class CredencialPerdidaView extends Component {
         console.log(CredencialLista)
         return(
             <div>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
                 <Table bordered responsive striped>
                     <thead>
                         <tr>

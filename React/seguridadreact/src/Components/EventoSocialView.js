@@ -37,10 +37,6 @@ class EventoSocialView extends Component {
         console.log(EventoSocialLista)
         return(
             <div>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
                 <Table bordered responsive striped>
                     <thead>
                         <tr>

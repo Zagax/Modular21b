@@ -54,8 +54,6 @@ class Bicicleta extends Component{
 
         return (
             <div>
-                <br></br>
-                <br></br>
                 <div className= "container mt-5">
                     <Link to='/bicicleta/view' className= "btn btn-info">Listado</Link>
                 </div>

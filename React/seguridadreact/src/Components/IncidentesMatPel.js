@@ -62,8 +62,6 @@ class ReporteIncidentesMatPel extends Component{
         const{ Ubicacion, Fenomeno, Descripcion, Evaluacion, Tareas, Recursos, Estrategias } = this.state
         return(
             <div>
-                <br></br>
-                <br></br>
                 <div className= "container mt-5">
                     <Link to='/incidentesmatpet/view' className= "btn btn-info">Listado</Link>
                 </div>

@@ -36,10 +36,6 @@ class SolicitudVideoCamarasView extends Component {
         console.log(SolicitudVideoCamarasLista)
         return(
             <div>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
                 <Table bordered>
                     <thead>
                         <tr>

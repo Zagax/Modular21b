@@ -72,10 +72,6 @@ class IncidentesMatPelView extends Component {
         console.log(IncidentesLista)
         return(
             <div>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
                 <Table bordered responsive striped>
                     <thead>
                         <tr>
@@ -87,6 +83,7 @@ class IncidentesMatPelView extends Component {
                             <th>Tareas</th>
                             <th>Recursos</th>
                             <th>Estrategias</th>
+                            <th>Evidencia Foto</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -101,6 +98,7 @@ class IncidentesMatPelView extends Component {
                                     <th>{user.Tareas}</th>
                                     <th>{user.Recursos}</th>
                                     <th>{user.Estrategias}</th>
+                                    <th><img src={user.EvidenciaFoto} width="100" height="100" alt ="imagen"/> </th>
                                     <th><Button variant="danger" onClick={() => this.removeCategory(user.id)}>Eliminar</Button></th>
                                     <th><Button variant="info" onClick={() => this.exportPDF(user)}>Generar Reporte</Button></th>
                                 </tr>

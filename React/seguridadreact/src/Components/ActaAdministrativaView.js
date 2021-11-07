@@ -54,7 +54,7 @@ class ActaAdministrativaView extends Component {
             method: 'DELETE',
             headers: {'Accept':'application/json','Content-Type':'application/json'}
         })
-        //window.location.reload()
+        window.location.reload()
     }
 
     render(){
@@ -62,10 +62,6 @@ class ActaAdministrativaView extends Component {
         console.log(ActaLista)
         return(
             <div>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
                 <Table bordered responsive striped>
                     <thead>
                         <tr>

@@ -80,10 +80,6 @@ class ReporteIncidentesView extends Component {
         console.log(IncidentesLista)
         return(
             <div>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
                 <Table bordered responsive striped>
                     <thead>
                         <tr>

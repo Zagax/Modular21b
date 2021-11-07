@@ -36,10 +36,6 @@ class FalloCamaraViews extends Component {
         console.log(FalloCamaraLista)
         return(
             <div>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
                 <Table bordered responsive striped>
                     <thead>
                         <tr>

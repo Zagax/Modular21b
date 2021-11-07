@@ -57,8 +57,6 @@ class RomperCandado extends Component{
         const { NombreAlumno, Carrera, CodigoAlumno, Descripcion} = this.state
         return (
             <div>
-                <br></br>
-                <br></br>
                 <div className= "container mt-5">
                     <Link to='/rompercandado/view' className= "btn btn-info">Listado</Link>
                 </div>

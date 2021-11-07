@@ -78,8 +78,6 @@ class HojaUrgencias extends Component{
         const{ Fecha, Nombre, Edad, Adscripcion, Codigo, Cargo, NoTelefono, ProvieneDe, Ubicacion, TrasladoA, Padecimiento,  DiabetesDiagnostico, DiabetesTratamiento, HipertensionDiagnostico, HipertensionTratamiento, EpilepsiaDiagnostico, EpilepsiaTratamiento, AsmaDiagnostico, AsmaTratamiento, Cirugias, Alergias, Sangre, TensionArterial, FC, FR, Temperatura, Saturacion, Glucosa, EscalaGlasgow, Neurologico, CabezaCuello, Cardiopulmonar, Abdomen, Extremidades, Diagnostico, Condicion, PronostioS, Tratamiento, } = this.state
         return(
             <div>
-                <br></br>
-                <br></br>
                 <div className= "container mt-5">
                     <Link to='/hojaurgencias/view' className= "btn btn-info">Listado</Link>
                 </div>

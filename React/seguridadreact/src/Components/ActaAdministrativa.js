@@ -41,8 +41,6 @@ class ActaAdministrativa extends Component{
         const { CodigoAlumno, NoOficio, Lugar, NombreAl, Causa} = this.state
         return (
             <div>
-                <br></br>
-                <br></br>
                 <div className= "container mt-5">
                     <Link to='/actaadmin/view' className="btn btn-info">Listado</Link>
                 </div>

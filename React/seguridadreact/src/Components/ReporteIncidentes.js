@@ -92,7 +92,6 @@ class ReporteIncidentes extends Component{
         Tatuajes, Piercings, Otra, Huida, Observacion, Descripcion} = this.state
         return (
             <div>
-                <br></br>
                 <div className= "container mt-5">
                     <br></br>
                     <Link to='/reporteincidentes/view' className= "btn btn-info">Listado</Link>

@@ -79,10 +79,6 @@ class RomperCandadoView extends Component {
         console.log(RomperLista)
         return(
             <div>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
                 <Table bordered striped responsive>
                     <thead>
                         <tr>
