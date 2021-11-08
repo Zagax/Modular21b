@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { Table } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 class SolicitudVideoCamarasView extends Component {
     constructor(props){
