@@ -1,7 +1,9 @@
+from django.http.response import JsonResponse
 from .models import EventoSocial, FalloCamara, SolicitudVideoCamaras, Bicicleta, PaseSalida, ActaAdministrativa, Users, Incidencias, Vistas, RomperCandado, HojaUrgencias, CredencialPerdida, ReporteIncidentesMatPel
 from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework import generics
+import pandas as pd
 from .serializers import ActaAdministrativaSerializer, BicicletaSerializer, IncidenciasSerializer, PaseSalidaSerializer, SolicitudCamSerializer, EventoSocialSerializer,FalloCamaraSerializer, UsersSerializer, VistasSerializer, RomperCandadoSerializer, HojaUrgenciasSerializer, CredencialPerdidaSerializer, ReporteIncidentesMatPelSerializer
 # Create your views here.
 
@@ -108,6 +110,14 @@ class ReporteIncidentesMatPelList(generics.ListCreateAPIView):
 class ReporteIncidentesMatPelDetail(generics.RetrieveDestroyAPIView):
     queryset = ReporteIncidentesMatPel.objects.all()
     serializer_class = ReporteIncidentesMatPelSerializer
+
+def AutoRegresion(request):
+    incidencias = Incidencias.objects.get_queryset()
+    serializer = IncidenciasSerializer(incidencias, many=True)
+    df = pd.DataFrame(serializer.data)
+    print(df)
+    resolve = df.to_json()
+    return JsonResponse(resolve, safe=False)
 
 def index(request):
     return HttpResponse("Hello, world. You're at the main_api index.")
