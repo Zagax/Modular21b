@@ -57,11 +57,20 @@ class ActaAdministrativaView extends Component {
         window.location.reload()
     }
 
+    goBack(){
+        window.history.back()
+    }
+
     render(){
         const {ActaLista} = this.state
         console.log(ActaLista)
         return(
             <div>
+                <br></br>
+                <div class="margin-left: 20">
+                    <Button onClick={() => this.goBack()}>Regresar</Button>
+                </div>
+                <br></br>
                 <Table bordered responsive striped>
                     <thead>
                         <tr>

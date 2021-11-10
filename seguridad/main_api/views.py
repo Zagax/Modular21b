@@ -116,6 +116,7 @@ def AutoRegresion(request):
     serializer = IncidenciasSerializer(incidencias, many=True)
     df = pd.DataFrame(serializer.data)
     datos = df[["FechaHora"]].copy()
+    datos["FechaHora"] = datos["FechaHora"].str.slice(stop=10)
     datos = datos.assign(Times=0)
     nuevo = datos.groupby(['FechaHora'])['Times'].count()
 
