@@ -117,9 +117,10 @@ def AutoRegresion(request):
     df = pd.DataFrame(serializer.data)
 
     datos = df[["FechaHora"]].copy()
+    nuevo = datos.groupby(['FechaHora'])['Times'].count()
 
-    print(datos)
-    resolve = datos.to_json()
+    # print(datos)
+    resolve = nuevo.to_json()
     return JsonResponse(resolve, safe=False)
 
 def index(request):
