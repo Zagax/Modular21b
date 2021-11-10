@@ -7,6 +7,15 @@ import pandas as pd
 from .serializers import ActaAdministrativaSerializer, BicicletaSerializer, IncidenciasSerializer, PaseSalidaSerializer, SolicitudCamSerializer, EventoSocialSerializer,FalloCamaraSerializer, UsersSerializer, VistasSerializer, RomperCandadoSerializer, HojaUrgenciasSerializer, CredencialPerdidaSerializer, ReporteIncidentesMatPelSerializer
 # Create your views here.
 
+import numpy as np
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
+from statsmodels.tsa.stattools import adfuller
+from statsmodels.graphics.tsaplots import plot_pacf
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+from statsmodels.tsa.arima_model import ARIMA
+
 class SolicitudCam(generics.ListCreateAPIView):
     queryset = SolicitudVideoCamaras.objects.all()
     serializer_class = SolicitudCamSerializer
@@ -118,10 +127,43 @@ def AutoRegresion(request):
     datos = df[["FechaHora"]].copy()
     datos["FechaHora"] = datos["FechaHora"].str.slice(stop=10)
     datos = datos.assign(Times=0)
-    nuevo = datos.groupby(['FechaHora'])['Times'].count()
+    meruko = datos.groupby(['FechaHora'])['Times'].count()
 
+    meruko.shape
+
+    X = meruko["Times"].values
+    result = adfuller(X)
+
+    meruko["Values_shifted"] = meruko["Times"].shift()
+    meruko.drop("FechaHora",axis= 1, inplace=True)
+    meruko.dropna(inplace=True)
+
+    y = meruko.Times.values
+    X = meruko.Times_shifted.values
+
+    train_size = int(len(X) * 0.80)
+
+    X_train, X_test = X[0:train_size], X[train_size:len(X)]
+    y_train, y_test = y[0:train_size], y[train_size:len(X)]
+    
+    X_train = X_train.reshape(-1,1)
+    X_test = X_test.reshape(-1,1)
+
+    lr = LinearRegression()
+    lr.fit(X_train, y_train)
+
+    y_pred = lr.predict(X_test)
+
+    plt.plot(y_test[-10:], label="Actual Values")
+    plt.plot(y_pred[-10:], label="Predicted Values")
+    plt.legend()
+    plt.show()
+
+    regresion = pd.DataFrame()
+    regresion["Actual Values"] = y_test[-10:]
+    regresion["Predicted Values"] = y_pred[-10:]
     # print(datos)
-    resolve = nuevo.to_json()
+    resolve = regresion.to_json()
     return JsonResponse(resolve, safe=False)
 
 def index(request):
