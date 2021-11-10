@@ -115,8 +115,11 @@ def AutoRegresion(request):
     incidencias = Incidencias.objects.get_queryset()
     serializer = IncidenciasSerializer(incidencias, many=True)
     df = pd.DataFrame(serializer.data)
-    print(df)
-    resolve = df.to_json()
+
+    datos = df[["FechaHora"]].copy()
+
+    print(datos)
+    resolve = datos.to_json()
     return JsonResponse(resolve, safe=False)
 
 def index(request):
