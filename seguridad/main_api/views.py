@@ -189,6 +189,9 @@ def RegresionLineal(request):
     #Predicción
     x_predict = np.linspace(0, 900, num=100)
     times_predict = a[0] + a[1] * x_predict
+    #Dias finales
+    
+
     #Graficamos
     plt.scatter(x, c)
     plt.xlabel('Días'); plt.ylabel('Incidencias'); plt.plot(x_predict, times_predict, 'c')
@@ -197,7 +200,8 @@ def RegresionLineal(request):
     plt.savefig('GraficaLineal.png')
     #Dias a predecir
     y = a[1]*(900)+a[0]
-    # y = y-Lista[len(Lista-1)]
+    #y = y-Lista[len(Lista-1)]
+    y = y-c[-1]
     y1 = f"{y:.1f}"
     Total = { "Total del proximo año": y1}
     
