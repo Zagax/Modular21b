@@ -75,6 +75,10 @@ class RomperCandadoView extends Component {
         window.location.reload()
     }
 
+    goBack(){
+        window.history.back()
+    }
+
     render(){
         const {RomperLista} = this.state
         console.log(RomperLista)

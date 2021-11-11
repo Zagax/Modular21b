@@ -75,6 +75,10 @@ class CredencialPerdidaView extends Component {
         window.location.reload()
     }
 
+    goBack(){
+        window.history.back()
+    }
+
     render(){
         const {CredencialLista} = this.state
         console.log(CredencialLista)

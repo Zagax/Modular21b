@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Table } from 'react-bootstrap';
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import { Container } from 'react-bootstrap';
 
 class ActaAdministrativaView extends Component {
     constructor(props){
@@ -66,11 +67,10 @@ class ActaAdministrativaView extends Component {
         console.log(ActaLista)
         return(
             <div>
-                <br></br>
-                <div class="margin-left: 20">
+                <Container>
                     <Button onClick={() => this.goBack()}>Regresar</Button>
-                </div>
-                <br></br>
+                </Container>
+                <br/>
                 <Table bordered responsive striped>
                     <thead>
                         <tr>

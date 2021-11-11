@@ -79,6 +79,10 @@ class EventoSocialView extends Component {
         window.location.reload()
     }
 
+    goBack(){
+        window.history.back()
+    }
+
     render(){
         const {EventoSocialLista} = this.state
         console.log(EventoSocialLista)

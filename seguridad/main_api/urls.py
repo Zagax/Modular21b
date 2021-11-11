@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import ActaAdministrativaDetail, ActaAdministrativaList, AutoRegresion, BicicletaDetail, BicicletaList, EventoSocialDetail, EventoSocialList, FalloCamaraDetail, FalloCamaraList, IncidenciasDetail, IncidenciasList, PaseSalidaDetail, PaseSalidaList, SolicitudCamDetail,SolicitudCam,UsersDetail, UsersList, VistasDetail, VistasList, RomperCandadoDetail, RomperCandadoList, HojaUrgenciasDetail, HojaUrgenciasList, CredencialPerdidaDetail, CredencialPerdidaList, ReporteIncidentesMatPelList, ReporteIncidentesMatPelDetail
+from .views import ActaAdministrativaDetail, ActaAdministrativaList, AutoRegresion, BicicletaDetail, BicicletaList, EventoSocialDetail, EventoSocialList, FalloCamaraDetail, FalloCamaraList, IncidenciasDetail, IncidenciasList, PaseSalidaDetail, PaseSalidaList, RegresionLineal, SolicitudCamDetail,SolicitudCam,UsersDetail, UsersList, VistasDetail, VistasList, RomperCandadoDetail, RomperCandadoList, HojaUrgenciasDetail, HojaUrgenciasList, CredencialPerdidaDetail, CredencialPerdidaList, ReporteIncidentesMatPelList, ReporteIncidentesMatPelDetail
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -31,7 +31,8 @@ urlpatterns = [
     path('credencialperdida/<int:pk>/', CredencialPerdidaDetail.as_view(), name='CredencialPerdidadetailcreate'),
     path('reporteincidentesmatpel', ReporteIncidentesMatPelList.as_view(), name='ReporteIncidentesMatPellistcreate'),
     path('reporteincidentesmatpel/<int:pk>/', ReporteIncidentesMatPelDetail.as_view(), name='ReporteIncidentesMatPeldetailcreate'),
-    path('regresion', AutoRegresion, name='AutoRegresion')
+    path('autoregresion', AutoRegresion, name='AutoRegresion'),
+    path('regresionlineal', RegresionLineal, name='RegresionLineal'),
     
 ]
 if settings.DEBUG:

@@ -67,12 +67,17 @@ class SolicitudVideoCamarasView extends Component {
         doc.autoTable(content);
         doc.save("Reportes Solicitud de VideoCamaras: "+elt.id+".pdf")
     }
+    
     removeCategory (ids) {
         fetch('https://seguridadqci.herokuapp.com/solcamara/'+ids+'/',{
             method: 'DELETE',
             headers: {'Accept':'application/json','Content-Type':'application/json'}
         })
         window.location.reload()
+    }
+
+    goBack(){
+        window.history.back()
     }
 
     render(){

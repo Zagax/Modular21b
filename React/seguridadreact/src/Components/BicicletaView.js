@@ -77,6 +77,10 @@ class BicicletaView extends Component {
         window.location.reload()
     }
     
+    goBack(){
+        window.history.back()
+    }
+
     render(){
         const {BicicletaLista} = this.state
         console.log(BicicletaLista)

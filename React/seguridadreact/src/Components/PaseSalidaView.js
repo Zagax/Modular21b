@@ -76,6 +76,10 @@ class PaseSalidaView extends Component {
         window.location.reload()
     }
 
+    goBack(){
+        window.history.back()
+    }
+
     render(){
         const {PaseLista} = this.state
         console.log(PaseLista)

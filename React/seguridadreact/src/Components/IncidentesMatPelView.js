@@ -68,6 +68,10 @@ class IncidentesMatPelView extends Component {
         window.location.reload()
     }
 
+    goBack(){
+        window.history.back()
+    }
+
     render(){
         const {IncidentesLista} = this.state
         console.log(IncidentesLista)

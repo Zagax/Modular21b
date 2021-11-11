@@ -89,6 +89,10 @@ class FalloCamaraViews extends Component {
         window.location.reload()
     }
 
+    goBack(){
+        window.history.back()
+    }
+
     render(){
         const {FalloCamaraLista} = this.state
         console.log(FalloCamaraLista)

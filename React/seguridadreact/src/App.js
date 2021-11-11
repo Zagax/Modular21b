@@ -1,7 +1,8 @@
 // import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from 'react-bootstrap/Navbar'
+import Navbar from 'react-bootstrap/Navbar';
+import "../node_modules/jquery/dist/jquery.min.js";
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -51,7 +52,7 @@ function App(){
     // <h2>The Components way</h2><Login/><br /><Logout />
     
     <Router>
-        <Navbar bg="dark" variant="dark" expand={false} /*collapseOnSelect*/>
+        <Navbar bg="dark" variant="dark" expand={false} collapseOnSelect>
         <Container fluid>
           <Navbar.Brand>
             <a href = "https://seguridadqci.netlify.app/" >
@@ -105,7 +106,7 @@ function App(){
                         <Link to='/solicitudcam' className="btn btn-outline-dark">Solicitud de VideoCamaras</Link>
                       </NavDropdown.Item>
                     </NavDropdown>
-                    <NavDropdown title="Mantenimiento" id="offcanvasNavbarDropdown">
+                    <NavDropdown title="Mantenimiento" id="collasible-nav-dropdown">
                       <NavDropdown.Item>
                         <Link to='/fallocamara' className="btn btn-outline-dark">Fallo de Camara/Switch</Link>
                       </NavDropdown.Item>

@@ -1,4 +1,6 @@
+from datetime import time
 from django.http.response import JsonResponse
+from numpy.lib.npyio import load
 from .models import EventoSocial, FalloCamara, SolicitudVideoCamaras, Bicicleta, PaseSalida, ActaAdministrativa, Users, Incidencias, Vistas, RomperCandado, HojaUrgencias, CredencialPerdida, ReporteIncidentesMatPel
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -6,8 +8,8 @@ from rest_framework import generics
 import pandas as pd
 from .serializers import ActaAdministrativaSerializer, BicicletaSerializer, IncidenciasSerializer, PaseSalidaSerializer, SolicitudCamSerializer, EventoSocialSerializer,FalloCamaraSerializer, UsersSerializer, VistasSerializer, RomperCandadoSerializer, HojaUrgenciasSerializer, CredencialPerdidaSerializer, ReporteIncidentesMatPelSerializer
 # Create your views here.
-
 import numpy as np
+from numpy.linalg import inv 
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
 from statsmodels.tsa.stattools import adfuller
@@ -15,6 +17,8 @@ from statsmodels.graphics.tsaplots import plot_pacf
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 from statsmodels.tsa.arima_model import ARIMA
+import json
+
 
 class SolicitudCam(generics.ListCreateAPIView):
     queryset = SolicitudVideoCamaras.objects.all()
@@ -127,19 +131,17 @@ def AutoRegresion(request):
     datos = df[["FechaHora"]].copy()
     datos["FechaHora"] = datos["FechaHora"].str.slice(stop=10)
     datos = datos.assign(Times=0)
-    meruko = datos.groupby(['FechaHora'])['Times'].count()
+    aux = datos.groupby(['FechaHora']).size().reset_index(name='Times')
+    aux.shape
 
-    meruko.shape
+    X = aux["Times"].values
 
-    X = meruko["Times"].values
-    result = adfuller(X)
+    aux["Values_shifted"] = aux["Times"].shift()
+    aux.drop("FechaHora",axis= 1, inplace=True)
+    aux.dropna(inplace=True)
 
-    meruko["Values_shifted"] = meruko["Times"].shift()
-    meruko.drop("FechaHora",axis= 1, inplace=True)
-    meruko.dropna(inplace=True)
-
-    y = meruko.Times.values
-    X = meruko.Times_shifted.values
+    y = aux.Times.values
+    X = aux.Values_shifted.values
 
     train_size = int(len(X) * 0.80)
 
@@ -154,17 +156,52 @@ def AutoRegresion(request):
 
     y_pred = lr.predict(X_test)
 
-    plt.plot(y_test[-10:], label="Actual Values")
-    plt.plot(y_pred[-10:], label="Predicted Values")
+    plt.plot(y_test[-500:], label="Actual Values")
+    plt.plot(y_pred[-500:], label="Predicted Values")
     plt.legend()
     plt.show()
+    plt.savefig('Grafica.png')
 
     regresion = pd.DataFrame()
     regresion["Actual Values"] = y_test[-10:]
     regresion["Predicted Values"] = y_pred[-10:]
-    # print(datos)
+    print(datos)
     resolve = regresion.to_json()
     return JsonResponse(resolve, safe=False)
+
+def RegresionLineal(request):
+    incidencias = Incidencias.objects.get_queryset()
+    serializer = IncidenciasSerializer(incidencias, many=True)
+    df = pd.DataFrame(serializer.data)
+    datos = df[["FechaHora"]].copy()
+    datos["FechaHora"] = datos["FechaHora"].str.slice(stop=10)
+    datos = datos.assign(Times=0)
+    aux = datos.groupby(['FechaHora']).size().reset_index(name='Times')
+    x = aux["Times"].index
+    c = aux["Times"]
+    Lista=list(c)
+    for i in range(len(Lista)):
+        if i>0:
+            Lista[i]=Lista[i]+Lista[i-1]
+    c = Lista
+    X = np.array([np.ones(len(x)), x]).T
+    a = inv(X.T @ X) @ X.T @ c    ### Fórmula para minimizar los cuadrados
+    #Predicción
+    x_predict = np.linspace(0, 900, num=100)
+    times_predict = a[0] + a[1] * x_predict
+    #Graficamos
+    plt.scatter(x, c)
+    plt.xlabel('Días'); plt.ylabel('Incidencias'); plt.plot(x_predict, times_predict, 'c')
+    plt.legend()
+    plt.show()
+    plt.savefig('GraficaLineal.png')
+    #Dias a predecir
+    y = a[1]*(900)+a[0]
+    # y = y-Lista[len(Lista-1)]
+    y1 = f"{y:.1f}"
+    Total = { "Total del proximo año": y1}
+    
+    return JsonResponse(Total, safe=False)
 
 def index(request):
     return HttpResponse("Hello, world. You're at the main_api index.")
