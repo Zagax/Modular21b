@@ -4,6 +4,7 @@ import { Table } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import { Container } from 'react-bootstrap';
 
 class FalloCamaraViews extends Component {
     constructor(props){
@@ -93,6 +94,9 @@ class FalloCamaraViews extends Component {
         console.log(FalloCamaraLista)
         return(
             <div>
+                <Container>
+                    <Button onClick={() => this.goBack()}>Regresar</Button>
+                </Container>
                 <Table bordered responsive striped>
                     <thead>
                         <tr>

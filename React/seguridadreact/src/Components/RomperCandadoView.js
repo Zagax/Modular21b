@@ -4,6 +4,7 @@ import { Table } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import { Container } from 'react-bootstrap';
 
 class RomperCandadoView extends Component {
     constructor(props){
@@ -79,6 +80,9 @@ class RomperCandadoView extends Component {
         console.log(RomperLista)
         return(
             <div>
+                <Container>
+                    <Button onClick={() => this.goBack()}>Regresar</Button>
+                </Container>
                 <Table bordered striped responsive>
                     <thead>
                         <tr>

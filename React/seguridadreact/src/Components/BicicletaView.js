@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Table } from 'react-bootstrap';
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import { Container } from 'react-bootstrap';
 
 
 class BicicletaView extends Component {
@@ -80,30 +81,36 @@ class BicicletaView extends Component {
         const {BicicletaLista} = this.state
         console.log(BicicletaLista)
         return(
-            <Table bordered responsive>
-                <thead>
-                    <tr>
-                        <th>CodigoAlumno</th>
-                        <th>Foto id frente</th>
-                        <th>Foto id detras</th>
-                        <th>Descripcion</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        BicicletaLista.map((user) => (
-                            <tr key={user.id} >
-                                <th>{user.CodigoAlumno}</th>
-                                <th><img src={user.FotoIdF} width="100" height="100" alt ="imagen"/> </th>
-                                <th><img src={user.FotoIdB} width="100" height="100" alt ="imagen"/> </th>
-                                <th>{user.Descripcion}</th>
-                                <th><Button variant="danger" onClick={() => this.removeCategory(user.id)}>Eliminar</Button></th>
-                                <th><Button variant="info" onClick={() => this.exportPDF(user)}>Generar Reporte</Button></th>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </Table>
+            <div>
+                <Container>
+                    <Button onClick={() => this.goBack()}>Regresar</Button>
+                </Container>
+                <br/>
+                <Table bordered responsive>
+                    <thead>
+                        <tr>
+                            <th>CodigoAlumno</th>
+                            <th>Foto id frente</th>
+                            <th>Foto id detras</th>
+                            <th>Descripcion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            BicicletaLista.map((user) => (
+                                <tr key={user.id} >
+                                    <th>{user.CodigoAlumno}</th>
+                                    <th><img src={user.FotoIdF} width="100" height="100" alt ="imagen"/> </th>
+                                    <th><img src={user.FotoIdB} width="100" height="100" alt ="imagen"/> </th>
+                                    <th>{user.Descripcion}</th>
+                                    <th><Button variant="danger" onClick={() => this.removeCategory(user.id)}>Eliminar</Button></th>
+                                    <th><Button variant="info" onClick={() => this.exportPDF(user)}>Generar Reporte</Button></th>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </Table>
+            </div>
         )
     }
 }

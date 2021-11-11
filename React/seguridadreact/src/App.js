@@ -51,7 +51,7 @@ function App(){
     // <h2>The Components way</h2><Login/><br /><Logout />
     
     <Router>
-        <Navbar bg="dark" variant="dark" expand={false} collapseOnSelect>
+        <Navbar bg="dark" variant="dark" expand={false} /*collapseOnSelect*/>
         <Container fluid>
           <Navbar.Brand>
             <a href = "https://seguridadqci.netlify.app/" >
@@ -73,7 +73,7 @@ function App(){
                 <Offcanvas.Body>
                   <Nav className="justify-content-end flex-grow-1 pe-3" id="collasible-nav-dropdown">
                   {/* <Login></Login> */}
-                    <NavDropdown title="Seguridad" id="offcanvasNavbarDropdown">
+                    <NavDropdown title="Seguridad" id="offcanvasNavbarDropdown collasible-nav-dropdown">
                       <NavDropdown.Item>
                         <Link to='/actaadmin' className="btn btn-outline-dark">Acta Administrativa</Link>
                       </NavDropdown.Item>
@@ -125,7 +125,7 @@ function App(){
         <Route path= '/' exact>
         
         <div className="App">
-            <img src={logo} className="App-logo" alt="logo" />
+            <img src="CUCEILogo.png" className="App-logo" alt="logo" />
             {isAuthenticated ? (
             <>
                 <Profile />

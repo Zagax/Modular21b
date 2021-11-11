@@ -4,6 +4,7 @@ import { Table } from 'react-bootstrap';
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import Button from 'react-bootstrap/Button';
+import { Container } from 'react-bootstrap';
 
 class ReporteIncidentesView extends Component {
     constructor(props){
@@ -80,6 +81,9 @@ class ReporteIncidentesView extends Component {
         console.log(IncidentesLista)
         return(
             <div>
+                <Container>
+                    <Button onClick={() => this.goBack()}>Regresar</Button>
+                </Container>
                 <Table bordered responsive striped>
                     <thead>
                         <tr>

@@ -4,6 +4,7 @@ import { Table } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import { Container } from 'react-bootstrap';
 
 class IncidentesMatPelView extends Component {
     constructor(props){
@@ -72,6 +73,9 @@ class IncidentesMatPelView extends Component {
         console.log(IncidentesLista)
         return(
             <div>
+                <Container>
+                    <Button onClick={() => this.goBack()}>Regresar</Button>
+                </Container>
                 <Table bordered responsive striped>
                     <thead>
                         <tr>

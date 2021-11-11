@@ -11,7 +11,7 @@ ReactDOM.render(
     domain="dev-o6-fcmca.us.auth0.com" 
     clientId="lUr5xH7S6hQoCuMICv7BpCZxQYjpHPHv"
     redirectUri={window.location.origin}>
-    <App />
+      <App />
     </Auth0Provider>
   </React.StrictMode>,
   document.getElementById('root')
