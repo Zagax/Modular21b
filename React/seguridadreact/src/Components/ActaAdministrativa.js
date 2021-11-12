@@ -2,6 +2,23 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { Col, Container, Form, Row } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button'
+
+class PrintComponent extends Component {
+    render() {
+        return (
+          <div>
+            <ReactToPrint
+              trigger={() => <Container><br/><Button variant="warning">Imprimir Formato</Button></Container>}
+              content={() => this.componentRef}
+            />
+            <ActaAdministrativa ref={el => (this.componentRef = el)} />
+          </div>
+        );
+      }
+}
+
+export default PrintComponent
 
 class ActaAdministrativa extends Component{
     constructor(props) {
@@ -81,4 +98,4 @@ class ActaAdministrativa extends Component{
     }
 }
 
-export default ActaAdministrativa
+//export default ActaAdministrativa

@@ -2,6 +2,24 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { Col, Container, Form, Row } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button'
+
+class PrintComponent extends Component {
+    render() {
+        return (
+          <div>
+            <ReactToPrint
+              trigger={() => <Container><br/><Button variant="warning">Imprimir Formato</Button></Container>}
+              content={() => this.componentRef}
+            />
+            <Bicicleta ref={el => (this.componentRef = el)} />
+          </div>
+        );
+      }
+}
+
+export default PrintComponent
+
 class RomperCandado extends Component{
     constructor(props) {
         super(props)
@@ -100,4 +118,4 @@ class RomperCandado extends Component{
     }
 }
 
-export default RomperCandado
+//export default RomperCandado

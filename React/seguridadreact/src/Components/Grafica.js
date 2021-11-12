@@ -21,7 +21,7 @@ class Grafica extends Component{
         return (
             <div>
                 <Container>
-                    <Button onClick={() => this.goBack()}>Regresar</Button>
+                    <Button variant="black" onClick={() => this.goBack()}>Regresar</Button>
                 </Container>
                 <Table bordered responsive striped>
                     <thead>
