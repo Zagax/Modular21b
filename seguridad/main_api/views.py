@@ -181,17 +181,14 @@ def RegresionLineal(request):
     c = aux["Times"]
     Lista=list(c)
     for i in range(len(Lista)):
-        if i>0:
+        if i > 0:
             Lista[i]=Lista[i]+Lista[i-1]
     c = Lista
     X = np.array([np.ones(len(x)), x]).T
     a = inv(X.T @ X) @ X.T @ c    ### Fórmula para minimizar los cuadrados
     #Predicción
-    x_predict = np.linspace(0, 900, num=100)
+    x_predict = np.linspace(0, 900, num=900)
     times_predict = a[0] + a[1] * x_predict
-    #Dias finales
-    
-
     #Graficamos
     plt.scatter(x, c)
     plt.xlabel('Días'); plt.ylabel('Incidencias'); plt.plot(x_predict, times_predict, 'c')
@@ -200,12 +197,21 @@ def RegresionLineal(request):
     plt.savefig('GraficaLineal.png')
     #Dias a predecir
     y = a[1]*(900)+a[0]
+
+    print("aaa", c)
     #y = y-Lista[len(Lista-1)]
     y = y-c[-1]
+    numeros = pd.DataFrame()
+    
+    numeros["Incidentes"] = times_predict
+    print(numeros["Incidentes"])
+    print(y)
+    numeros = numeros.to_json()
+    print(numeros)
     y1 = f"{y:.1f}"
     Total = { "Total del proximo año": y1}
     
-    return JsonResponse(Total, safe=False)
+    return JsonResponse(numeros, safe=False)
 
 def index(request):
     return HttpResponse("Hello, world. You're at the main_api index.")
