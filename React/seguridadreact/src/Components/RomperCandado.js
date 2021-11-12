@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { Col, Container, Form, Row } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import ReactToPrint from "react-to-print";
 
 class PrintComponent extends Component {
     render() {
@@ -12,7 +13,7 @@ class PrintComponent extends Component {
               trigger={() => <Container><br/><Button variant="warning">Imprimir Formato</Button></Container>}
               content={() => this.componentRef}
             />
-            <Bicicleta ref={el => (this.componentRef = el)} />
+            <RomperCandado ref={el => (this.componentRef = el)} />
           </div>
         );
       }

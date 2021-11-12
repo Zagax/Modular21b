@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import ReactToPrint from "react-to-print";
 
 class PrintComponent extends Component {
     render() {
@@ -12,7 +13,7 @@ class PrintComponent extends Component {
               trigger={() => <Container><br/><Button variant="warning">Imprimir Formato</Button></Container>}
               content={() => this.componentRef}
             />
-            <IncindentesMatPel ref={el => (this.componentRef = el)} />
+            <ReporteIncidentesMatPel ref={el => (this.componentRef = el)} />
           </div>
         );
       }
@@ -130,4 +131,4 @@ class ReporteIncidentesMatPel extends Component{
     }
 }
 
-export default ReporteIncidentesMatPel
+//export default ReporteIncidentesMatPel

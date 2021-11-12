@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import Button from 'react-bootstrap/Button'
+import ReactToPrint from "react-to-print";
 
 class PrintComponent extends Component {
     render() {
