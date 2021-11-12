@@ -38,7 +38,6 @@ import { Container, Nav, NavDropdown, Offcanvas } from 'react-bootstrap';
 import LoginButton from './Components/Login';
 import LogoutButton from './Components/Logout';
 import Profile from './Components/Profile';
-import logo from "./logo.svg";
 import Grafica from './Components/Grafica';
 
 //import Button from 'react-bootstrap';

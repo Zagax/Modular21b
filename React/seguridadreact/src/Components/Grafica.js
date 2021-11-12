@@ -1,30 +1,45 @@
 import React, { Component } from 'react';
-import { Col, Container, Form, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 
 class Grafica extends Component{
     constructor(props) {
         super(props)
         this.state={
-            urls:""
+            Regresion:"https://seguridadqci.herokuapp.com/GraficaLineal.png",
+            AutoRegresion:"https://seguridadqci.herokuapp.com/Grafica.png"
         }
     }
 
+    goBack(){
+        window.history.back()
+    }
+
     render(){
-        //const {urls} = this.state;
+        const {Regresion,AutoRegresion} = this.state;
         return (
             <div>
-                <h1 className="display-3" align="center">
-                    Grafica de prediccion
-                </h1>
-                <Form onSubmit={this.submitHandler} className="needs-validation">
-                    <Container>
-                        <Row>
-                            <Col>
-                                <img src="https://seguridadqci.herokuapp.com/GraficaLineal.png" alt="Y mi gráfica?"> </img>
-                            </Col>
-                        </Row>
-                    </Container>
-                </Form>
+                <Container>
+                    <Button onClick={() => this.goBack()}>Regresar</Button>
+                </Container>
+                <Table bordered responsive striped>
+                    <thead>
+                        <tr>
+                            <th>Grafica</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <th>Regresion Lineal:</th>
+                                <th><img src={Regresion} alt ="Y mi grafica?"/></th>
+                            </tr>
+                            <tr>
+                                <th>Auto Regresion:</th>
+                                <th><img src={AutoRegresion} alt ="Y mi grafica?"/></th>
+                            </tr>
+                    </tbody>
+                </Table>
             </div>
         )
     }
