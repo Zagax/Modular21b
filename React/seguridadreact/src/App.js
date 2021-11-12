@@ -39,6 +39,7 @@ import LoginButton from './Components/Login';
 import LogoutButton from './Components/Logout';
 import Profile from './Components/Profile';
 import logo from "./logo.svg";
+import Grafica from './Components/Grafica';
 
 //import Button from 'react-bootstrap';
 //import cucei from './images/cucei.png';
@@ -110,6 +111,9 @@ function App(){
                       <NavDropdown.Item>
                         <Link to='/fallocamara' className="btn btn-outline-dark">Fallo de Camara/Switch</Link>
                       </NavDropdown.Item>
+                      <NavDropdown.Item>
+                        <Link to='/grafica' className="btn btn-outline-dark">Prediccion</Link>
+                      </NavDropdown.Item>
                     </NavDropdown>
                   </Nav>
                   <LogoutButton />
@@ -126,7 +130,7 @@ function App(){
         <Route path= '/' exact>
         
         <div className="App">
-            <img src="CUCEILogo.png" className="App-logo" alt="logo" />
+            <img src="CUCEILogo.png" alt="logo" />
             {isAuthenticated ? (
             <>
                 <Profile />
@@ -203,6 +207,9 @@ function App(){
         </Route>
         <Route path='/solicitudcam/view' exact>
           <SolicitudVideoCamarasView></SolicitudVideoCamarasView>
+        </Route>
+        <Route path='/grafica' exact>
+          <Grafica></Grafica>
         </Route>
         <Route path='/logout' exact>
         {/* <LogoutButton></Logout> */}
